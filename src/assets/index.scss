@@ -1,0 +1,13 @@
+body {
+    background-image: url("./images/grid-bg.png");
+    image-rendering: pixelated;
+}
+
+html {
+    color: white;
+    font-size: 14px;
+    line-height: 14px;
+}
+
+@import "../gameList/GameList.scss";
+@import "../games/GameStage.scss";

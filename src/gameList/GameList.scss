@@ -1,0 +1,36 @@
+.game-list {
+    .game-icon {
+        width: 54px;
+        height: 54px;
+        background-color: red;
+        border-radius: 10px;
+        position: relative;
+        cursor: pointer;
+
+        &::before {
+            content: "";
+            position: absolute;
+            height: 54px;
+            width: 54px;
+            border-image-source: url("../assets/images/game-icon.png");
+            border-image-slice: 6 fill;
+            border-image-width: 6px;
+            z-index: 2;
+        }
+
+        &:hover {
+            &::after {
+                content: "";
+                position: absolute;
+                height: 50px;
+                width: 50px;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                margin: auto;
+                background-image: url("../assets/images/play-btn.png");
+            }
+        }
+    }
+}

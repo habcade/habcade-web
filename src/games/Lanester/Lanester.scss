@@ -1,0 +1,85 @@
+.ls-ui {
+    top:0;
+    bottom:0;
+    z-index: 2;
+    height: 100%;
+    width: 100%;
+
+    .ls-ui-sign {
+        position: absolute;
+        width: 70px;
+        bottom:20px;
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+        left:calc(50% + 140px);
+
+        .ls-ui-sign-post {
+            position: absolute;
+            left:0;
+            right:0;
+            top:-5px;
+            margin:auto;
+            background-image: url("../assets/images/lanester/sign-post.png");
+            background-position: -5px 0;
+            width:5px;
+            height:calc(100% + 20px);
+
+            &::after,
+            &::before {
+                content:'';
+                position: absolute;
+                left:0;
+                right:0;
+                margin:auto;
+                background-image: url("../assets/images/lanester/sign-post.png");
+                width:5px;
+                height:4px;
+            }
+
+            &::before {
+                top:-4px;
+            }
+
+            &::after {
+                bottom:-4px;
+                background-position: -10px;
+            }
+        }
+        
+        .ls-ui-sign-plate {
+            border-image-source: url("../assets/images/lanester/sign.png");
+            border-image-slice: 6 6 20 20 fill;
+            border-image-width: 6px 6px 20px 20px;
+            position: relative;
+            height:70px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding-bottom:15px;
+            z-index: 3;
+
+            &.ls-ui-sign-warn {
+                border-image-source: url("../assets/images/lanester/sign-warn.png");
+                width:100px;
+                margin-left:-15px
+            }
+    
+            .ls-ui-sign-title {
+                position: absolute;
+                bottom:3px;
+                left:3px;
+                right:3px;
+                font-size: 11px;
+                line-height: 11px;
+                text-align: center;
+                padding:2px;
+
+                border-image-source: url("../assets/images/lanester/sign-header.png");
+                border-image-slice: 3 fill;
+                border-image-width: 3px;
+            }
+        }
+    }
+
+}
