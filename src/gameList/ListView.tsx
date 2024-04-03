@@ -5,9 +5,9 @@ export const ListView = () => {
     const { setCurrentGame } = useGame();
 
     return (
-        <div className="flex flex-col h-full game-list">
+        <div className="flex flex-col h-full game-list gap-3 overflow-y-auto">
             {HGames.map((game) => (
-                <div className="flex gap-2 p-3 even:bg-black" key={game.key}>
+                <div className="flex gap-2 p-3 h-border-black" key={game.key}>
                     <div
                         className="game-icon"
                         onClick={() => setCurrentGame(game)}

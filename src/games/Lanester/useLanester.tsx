@@ -1,12 +1,14 @@
-import { Assets, Sprite } from "pixi.js";
+import { Assets, Sprite, Texture } from "pixi.js";
 import { ReactNode, useEffect, useRef, useState } from "react";
 import { useBetween } from "use-between";
 import { GetSounds } from "../../api";
+import { useGame } from "../../hooks";
+import { LoadAvatar } from "../../utils";
 
 const lanesterState = () => {
+    const { setReady, imager, look } = useGame();
     const [speed, setSpeed] = useState<number>(0);
     const [pressed, setPressed] = useState<{}>({});
-    const [ready, setReady] = useState<boolean>(false);
     const [running, setRunning] = useState<boolean>(false);
     const [enemies, setEnemies] = useState<
         {
@@ -20,6 +22,7 @@ const lanesterState = () => {
     const [action, setAction] = useState<string>(null);
     const [totaled, setTotaled] = useState<number>(0);
     const [started, setStarted] = useState<boolean>(false);
+    const [avatarSprites, setAvatarSprites] = useState<Texture[]>([]);
 
     const playerCollision = useRef<Sprite>();
 
@@ -49,6 +52,14 @@ const lanesterState = () => {
             { key: "ls-move", url: "./games/lanester/move.mp3" },
             { key: "ls-loop", url: "./games/lanester/loop.mp3", loop: true },
         ]);
+
+        const url = `${imager}${look}&effect=69`;
+
+        const left = await LoadAvatar(`${url}&direction=6`);
+        const middle = await LoadAvatar(`${url}&direction=7`);
+        const right = await LoadAvatar(`${url}&direction=8`);
+
+        setAvatarSprites([left, middle, right]);
 
         setReady(true);
     };
@@ -89,10 +100,10 @@ const lanesterState = () => {
     };
 
     useEffect(() => {
-        if (!dirOffset) return;
+        if (dirOffset == 1) return;
 
         setTimeout(() => {
-            setDirOffset(-1);
+            setDirOffset(1);
         }, 300);
     }, [dirOffset]);
 
@@ -129,8 +140,6 @@ const lanesterState = () => {
         setSpeed,
         pressed,
         setPressed,
-        ready,
-        setReady,
         running,
         setRunning,
         enemies,
@@ -152,6 +161,7 @@ const lanesterState = () => {
         totaled,
         started,
         setStarted,
+        avatarSprites,
     };
 };
 

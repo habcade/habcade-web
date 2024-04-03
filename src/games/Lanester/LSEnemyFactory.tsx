@@ -10,7 +10,6 @@ export const LSEnemyFactory = () => {
         pressed = {},
         setEnemies = null,
         speed = 0,
-        distance,
     } = useLanester();
     const [ticks, setTicks] = useState<number>(0);
 
@@ -20,7 +19,10 @@ export const LSEnemyFactory = () => {
 
             if (
                 newp ==
-                (speed > 1 ? 80 - Math.floor(speed * (0.5 * speed)) : 80)
+                    (speed > 4
+                        ? 120 - Math.floor(speed * (0.8 * speed))
+                        : 120) &&
+                pressed["ArrowUp"]
             ) {
                 if (running && speed > 0) {
                     setEnemies((prev) => {
@@ -35,7 +37,7 @@ export const LSEnemyFactory = () => {
                 return 0;
             }
 
-            if (newp >= 80) return 0;
+            if (newp >= 120) return 0;
             return newp;
         });
     });

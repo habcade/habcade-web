@@ -1,7 +1,7 @@
 import { Container, Stage } from "@pixi/react";
 import { Fragment, useEffect } from "react";
 import { GetSounds } from "../../api";
-import { IGameProps } from "../GameStage";
+import { useGame } from "../../hooks";
 import { LSActionBubble } from "./LSActionBubble";
 import { LSAvatar } from "./LSAvatar";
 import { LSEnemyFactory } from "./LSEnemyFactory";
@@ -13,9 +13,8 @@ import { useLanester } from "./useLanester";
 
 const MAX_LANE = 3;
 const MIN_LANE = 0;
-export const LanesterView = (props: IGameProps) => {
+export const LanesterView = () => {
     const {
-        ready,
         enemies,
         resetGame,
         unloadGame,
@@ -32,6 +31,8 @@ export const LanesterView = (props: IGameProps) => {
         setStarted,
         setRunning,
     } = useLanester();
+
+    const { ready } = useGame();
 
     useEffect(() => {
         loadAssets();
@@ -60,8 +61,8 @@ export const LanesterView = (props: IGameProps) => {
 
         if (newLane !== lane) {
             GetSounds().playAudio("ls-move", 0.5);
-            if (lane < newLane) setDirOffset(8);
-            if (lane > newLane) setDirOffset(6);
+            if (lane < newLane) setDirOffset(2);
+            if (lane > newLane) setDirOffset(0);
         }
 
         setLane(newLane);

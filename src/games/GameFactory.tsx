@@ -1,14 +1,12 @@
-import { Dispatch, MutableRefObject, SetStateAction } from "react";
 import { HGameKeys } from "../gameList";
-import { LanesterView } from "./Lanester/LanesterView";
 import { useGame } from "../hooks";
-import { IGameProps } from "./GameStage";
+import { LanesterView } from "./Lanester/LanesterView";
 
-export const GameFactory = (props: IGameProps) => {
+export const GameFactory = () => {
     const { currentGame, setCurrentGame } = useGame();
 
     switch (currentGame.key) {
         case HGameKeys.LANESTER:
-            return <LanesterView {...props} />;
+            return <LanesterView />;
     }
 };

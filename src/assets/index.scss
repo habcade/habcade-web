@@ -1,12 +1,84 @@
 body {
-    background-image: url("./images/grid-bg.png");
     image-rendering: pixelated;
+    background: black;
 }
 
 html {
     color: white;
     font-size: 14px;
     line-height: 14px;
+}
+
+.grid-bg {
+    background-image: url("./images/grid-bg.png");
+}
+
+.h-border-black {
+    border-image-source: url("../assets/images/border-black.png");
+    border-image-slice: 10 fill;
+    border-image-width: 10px;
+}
+
+.logo-big {
+    width: 229px;
+    height: 61px;
+    background-image: url("./images/logos/logo.png");
+}
+
+.logo-big-animated {
+    width: 229px;
+    height: 71px;
+    background-image: url("./images/logos/habcade.gif");
+}
+
+.logo-hc-animated {
+    width: 63px;
+    height: 71px;
+    background-image: url("./images/logos/hc.gif");
+}
+
+.logo-mini1 {
+    width: 50px;
+    height: 42px;
+    background-image: url("./images/logos/mini1.png");
+}
+
+.logo-mini2 {
+    width: 70px;
+    height: 32px;
+    background-image: url("./images/logos/mini2.png");
+}
+
+.loading-screen {
+    pointer-events: none;
+    .loader-splitter {
+        transition: all 1s ease-in-out;
+    }
+    .logo {
+        margin: auto;
+    }
+    &.done {
+        .loader-splitter:nth-child(1) {
+            top: -50%;
+        }
+        .loader-splitter:nth-child(2) {
+            bottom: -50%;
+        }
+
+        .logo {
+            opacity: 0;
+            animation: fadelogo 0.5s ease-in-out;
+        }
+    }
+}
+
+@keyframes fadelogo {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
 }
 
 @import "../gameList/GameList.scss";

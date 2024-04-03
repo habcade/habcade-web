@@ -1,42 +1,46 @@
-import { Howl } from "howler";
+import { Howl } from 'howler';
 
 interface Sound {
     key: string;
     sound: Howl;
 }
 
-export class SoundManager
-{
+export class SoundManager {
     public static _instance: SoundManager;
     private sounds: Sound[];
 
-    constructor()
-    {
+    constructor() {
         SoundManager._instance = this;
         this.sounds = [];
     }
 
-    public static get Instance() {
+    public static get Instance(): SoundManager {
         return this._instance || (this._instance = new SoundManager());
     }
 
-    public async loadAudio(key: string, url: string, loop: boolean = false): Promise<void> {
+    public async loadAudio(
+        key: string,
+        url: string,
+        loop: boolean = false
+    ): Promise<void> {
         if (this.getSound(key)) return;
 
         const sound = new Howl({
             src: url,
-            loop: loop
+            loop: loop,
         });
 
         await new Promise<void>((resolve) => {
-            sound.once("load", () => {
+            sound.once('load', () => {
                 this.sounds.push({ key, sound });
                 resolve();
             });
         });
     }
 
-    public async loadAudios(array: { key: string; url: string, loop?: boolean }[]): Promise<void> {
+    public async loadAudios(
+        array: { key: string; url: string; loop?: boolean }[]
+    ): Promise<void> {
         await Promise.all(
             array.map(async (val) => {
                 await this.loadAudio(val.key, val.url, val?.loop);
@@ -46,9 +50,8 @@ export class SoundManager
 
     public playAudio(key: string, volume: number = 1): void {
         const soundObj = this.getSound(key);
-        if (soundObj)
-        {
-            soundObj.sound.volume(volume)
+        if (soundObj) {
+            soundObj.sound.volume(volume);
             soundObj.sound.play();
         }
     }
@@ -67,14 +70,13 @@ export class SoundManager
         }
     }
 
-    public setVolume(key: string, volume: number)
-    { 
+    public setVolume(key: string, volume: number) {
         const soundObj = this.getSound(key);
 
-        if (soundObj) soundObj.sound.volume(volume)
+        if (soundObj) soundObj.sound.volume(volume);
     }
 
     public unloadAudios(arr: string[]): void {
-        arr.forEach(val => this.unloadAudio(val))
+        arr.forEach((val) => this.unloadAudio(val));
     }
 }

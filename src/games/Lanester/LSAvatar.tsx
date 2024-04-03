@@ -19,8 +19,8 @@ export const LSAvatar = () => {
         dirOffset,
         playerCollision,
         running,
-        action,
         setAction,
+        avatarSprites,
     } = useLanester();
     const app = useApp();
 
@@ -32,7 +32,6 @@ export const LSAvatar = () => {
     }, [app]);
 
     useInterval(() => {
-        //console.log("avatar-shake", running);
         if (running) setOffsetX((prev) => (prev > 0 ? -prev : Math.abs(prev)));
     }, 500);
 
@@ -57,7 +56,7 @@ export const LSAvatar = () => {
 
     const direction = useMemo(() => {
         if (dirOffset) return dirOffset;
-        return 7;
+        return 1;
     }, [dirOffset]);
 
     return (
@@ -89,9 +88,7 @@ export const LSAvatar = () => {
                         zIndex={GameConstants.AVATAR_HEIGHT + offsetY}
                         {...props}
                     >
-                        <Sprite
-                            image={`https://habbo-imaging.nitrodev.co/?figure=&effect=69&direction=${direction}`}
-                        />
+                        <Sprite texture={avatarSprites[dirOffset]} />
                     </Container>
                 )}
             </Spring>

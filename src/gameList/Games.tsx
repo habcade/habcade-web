@@ -12,6 +12,72 @@ export const HGames: HGame[] = [
         key: "lanester",
         image: "./games/lanester/road.png",
     },
+    {
+        name: "Lanester",
+        desc: "test",
+        key: "lanester",
+        image: "./games/lanester/road.png",
+    },
+    {
+        name: "Lanester",
+        desc: "test",
+        key: "lanester",
+        image: "./games/lanester/road.png",
+    },
+    {
+        name: "Lanester",
+        desc: "test",
+        key: "lanester",
+        image: "./games/lanester/road.png",
+    },
+    {
+        name: "Lanester",
+        desc: "test",
+        key: "lanester",
+        image: "./games/lanester/road.png",
+    },
+    {
+        name: "Lanester",
+        desc: "test",
+        key: "lanester",
+        image: "./games/lanester/road.png",
+    },
+    {
+        name: "Lanester",
+        desc: "test",
+        key: "lanester",
+        image: "./games/lanester/road.png",
+    },
+    {
+        name: "Lanester",
+        desc: "test",
+        key: "lanester",
+        image: "./games/lanester/road.png",
+    },
+    {
+        name: "Lanester",
+        desc: "test",
+        key: "lanester",
+        image: "./games/lanester/road.png",
+    },
+    {
+        name: "Lanester",
+        desc: "test",
+        key: "lanester",
+        image: "./games/lanester/road.png",
+    },
+    {
+        name: "Lanester",
+        desc: "test",
+        key: "lanester",
+        image: "./games/lanester/road.png",
+    },
+    {
+        name: "Lanester",
+        desc: "test",
+        key: "lanester",
+        image: "./games/lanester/road.png",
+    },
 ];
 
 export enum HGameKeys {
